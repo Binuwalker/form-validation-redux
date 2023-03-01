@@ -4,42 +4,42 @@ const loginSlice = createSlice({
     name: 'login',
     initialState: {
         emailError: false,
-        passwordError: false
+        passwordError: false,
+        emailSuccess: false,
+        passwordSuccess: false
     },
     reducers: {
+        
         loginEmailFail(state, action) {
             return {
                 ...state,
                 emailError: true,
-                emailErrorMsg: action.payload
+                emailErrorMsg: action.payload,
+                emailSuccess: false
             }
         },
         loginEmailSuccess(state, action) {
             return {
                 ...state,
                 emailError: false,
-                emailErrorMsg: ''
+                emailErrorMsg: '',
+                emailSuccess: true
             }
         },
         loginPasswordFail(state, action) {
             return {
                 ...state,
                 passwordError: true,
-                passwordErrorMsg: action.payload
+                passwordErrorMsg: action.payload,
+                passwordSuccess: false
             }
         },
         loginPasswordSuccess(state, action) {
             return {
                 ...state,
                 passwordError: false,
-                passwordErrorMsg: ''
-            }
-        },
-        loginSuccess(state, action) {
-            return {
-                ...state,
-                emailError: false,
-                passwordError: false
+                passwordErrorMsg: '',
+                passwordSuccess: true
             }
         }
     }
@@ -47,6 +47,6 @@ const loginSlice = createSlice({
 
 const { actions, reducer } = loginSlice;
 
-export const { loginEmailFail, loginEmailSuccess, loginPasswordFail, loginPasswordSuccess, loginSuccess } = actions;
+export const { loginEmailFail, loginEmailSuccess, loginPasswordFail, loginPasswordSuccess } = actions;
 
 export default reducer;
